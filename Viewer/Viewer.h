@@ -101,10 +101,14 @@ void Viewer::drawCameraTrajectory()
     {
       glPointSize(2.0);
       glColor4ub(0,0,255,255);
-      
-      for(auto trajectory : trajsss)
+      for(int j =0; j < trajsss.size(); j++)
       {
-        if(TimeCounter >= trajectory.size())
+	auto trajectory = trajsss[j];
+	if(j%2==0)
+		glColor4ub(255,0,0,255);
+	else
+		glColor4ub(0,0,255,255);
+        if(TimeCounter != trajectory.size())
           TimeCounter = trajectory.size();
         for(int i = 0; i < TimeCounter;i++)
             {
@@ -148,7 +152,7 @@ Viewer::Viewer( vector< vector<Eigen::Vector3d> > &trajs)
     glEnable(GL_DEPTH_TEST);
     //Generate glulookat style model view matrix, looking at (lx,ly,lz) Assumes forward is -z and up is +y
     s_cam = new OpenGlRenderState(
-      ProjectionMatrix(win_width,win_height,-2000,2000,-2000,2000,-2000,6000),
+      ProjectionMatrix(win_width,win_height,-2000,2000,-2000,2000,-20000,6000),
       ModelViewLookAt(0, 0, -2, 0, 0, 0, AxisY));
    // s_cam->SetModelViewMatrix(ModelViewMat);
     handler3d = new Handler3D( *s_cam);
