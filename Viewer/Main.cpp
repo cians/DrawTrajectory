@@ -17,9 +17,9 @@ int ReadConfig(int argc, char** argv,
     {
         //default act for test
 #ifdef _WIN32
-        file_name = "C:/Users/Cian/Pictures/Saved Pictures/result.act";
+        file_name = "./result.act";
 #else
-        file_name = "/home/wangnan/SLAM/RealtimeLocalization/images/test.act";
+        file_name = "./images/test.act";
 #endif
         file_names.push_back(file_name);
     }
